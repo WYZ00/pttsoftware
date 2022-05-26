@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contents and filter Method</title>
+
+</head>   
+<body>
+   <h1>This is Awesome <u>js Library</u></h1> 
+   <h1>Are You Ready to Learn js</h1>
+
+   <h2>This is Awesome <u>javascript Library</u></h2> 
+   <h2>Are You Ready to Learn javascript</h2>
+
+
+    <script src="./libs/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            console.log("Hey");
+
+            var gettext = $("h1").contents();
+            console.log(gettext);
+
+            gettext = $("h1").contents().filter("u").text();
+
+            gettext = $("h1,h2").contents().filter("u").text();
+            console.log(gettext);
+
+            gettext = $("h1").contents().text();
+            console.log(gettext);
+
+            // undefined
+            gettext = $("h1").contents().html();
+            console.log(gettext);
+
+
+        });
+    </script>
+</body>
+</html>

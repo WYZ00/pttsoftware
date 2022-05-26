@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delegate and Undelegate</title>
+</head>
+<body>
+    
+    <h1>Hello Myanmar</h1>
+    <h2>Zoom in</h2>
+
+    <button type="button" id="dlgbtn">delegate</button>
+    <button type="button" id="undlgbtn">undelegate</button>
+    <button type="button" id="hibtn">say hi</button>
+    <button type="button" id="zinbtn">Zoomin</button>
+    <button type="button" id="zoutbtn">Zoomout</button>
+
+    <script src="./libs/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function(){
+
+            // console.log("hi");
+
+            // $(selector).delegate(selector,event,function);
+            $("body").delegate("#dlgbtn","click",function(){
+
+                // delegate
+                // $("h1").append("<p>Thanks For Delegate me</p>");
+                $("h1").prepend("<p>Thanks For Delegate me</p>");
+                
+                // $("h1").after("<p>Thanks For Delegate me</p>");
+                // $("h1").before("<p>Thanks For Delegate me</p>");
+               
+            });
+
+             // undelegate
+             $("#undlgbtn").click(function(){
+                    $("body").undelegate("click");
+                });
+
+            $("#hibtn").click(function(){
+                    console.log("Hi");
+                });
+
+            
+            var x =0;        
+            $("#zinbtn").click(function(e){
+                $("h2").css({fontSize:  "+=10px"});
+                $("#zinbtn").text("Zoom " + (x+1));
+                x++;
+                
+                if(x >=7){
+                    $("body").undelegate(e);
+                    
+                }
+
+            });  
+            
+            $("#zoutbtn").click(function(e){
+                $("h2").css({fontSize: "-=10px"});
+                $("#zoutbtn").text("Zoom" + (x-1));
+                x--;
+
+                if(x <=0){
+                    $("body").undelegate(e);
+                }
+            });
+
+        });
+
+    </script>
+</body>
+</html>
